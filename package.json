@@ -5,13 +5,14 @@
     "dev:server": "live-server",
     "dev:sass": "node-sass source/scss/style.scss --watch --output=compiled/css --output-style=compressed --source-map=true",
     "dev": "run-p dev:*",
-    "build:sass": "node-sass source/scss/style.scss --output=compiled/css --output-style=compressed --source-map=true",
-    "build": "run-p build:*",
     "lint:html": "htmlhint **/*.html",
     "lint:sass": "stylelint 'source/scss/**/*.scss'",
     "lint:js": "standard '**/*.js'",
     "lint": "run-s lint:*",
-    "deploy": "run-s lint build"
+    "build:sass": "node-sass source/scss/style.scss --output=compiled/css --output-style=compressed --source-map=true",
+    "build": "run-p build:*",
+    "deploy:surge": "surge --project . --domain https://pearmans-kg-tgc7noax99ajvzzg.surge.sh/",
+    "deploy": "run-s lint build deploy:surge"
   },
   "devDependencies": {
     "htmlhint": "^0.9.13",
